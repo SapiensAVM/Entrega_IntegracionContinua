@@ -1,0 +1,12 @@
+# Dependencias de Node.js (se instalan con npm install / dentro del contenedor)
+node_modules/
+
+# Variables de entorno con contraseñas (usar .env.example como plantilla)
+.env
+
+# Registros de npm
+npm-debug.log*
+
+# Archivos del sistema operativo
+Thumbs.db
+.DS_Store

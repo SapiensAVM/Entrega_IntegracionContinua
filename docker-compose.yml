@@ -1,0 +1,47 @@
+services:
+  # Contenedor 1: base de datos MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-password}
+      MYSQL_DATABASE: ${DB_NAME:-tienda_db}
+    volumes:
+      - db_data:/var/lib/mysql        # persistencia de los datos
+    networks:
+      - app-network
+    healthcheck:
+      # Por TCP (127.0.0.1) para no dar falso "listo" durante la inicialización
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  # Contenedor 2: API Node.js (se construye con el Dockerfile)
+  api:
+    build: .
+    container_name: api_productos
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db                      # nombre del servicio = host dentro de la red
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+      DB_NAME: ${DB_NAME:-tienda_db}
+      PORT: 3000
+    depends_on:
+      db:
+        condition: service_healthy     # la API arranca cuando MySQL ya acepta conexiones
+    networks:
+      - app-network
+
+# Red interna que comunica ambos contenedores
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:

@@ -1,0 +1,19 @@
+# Jenkins para el proyecto de Integracion Continua - Entrega 2
+# Se levanta con: docker compose up -d --build  (desde la carpeta jenkins)
+
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    # root para poder usar el Docker del equipo anfitrion (entorno local/academico)
+    user: root
+    restart: unless-stopped
+    ports:
+      - "8080:8080"     # interfaz web de Jenkins
+      - "50000:50000"   # conexion de agentes
+    volumes:
+      - jenkins_home:/var/jenkins_home              # configuracion, jobs e historial
+      - /var/run/docker.sock:/var/run/docker.sock   # acceso al Docker del anfitrion
+
+volumes:
+  jenkins_home:

@@ -1,0 +1,91 @@
+Lanzada por el usuario Alice Montoya
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins  in C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (1. Verificar repositorio local)
+[Pipeline] echo
+Verificando carpeta del proyecto en el equipo...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>cd /d "C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev" 
+
+C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev>cd
+C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (2. Listar archivos del proyecto)
+[Pipeline] echo
+Listando archivos disponibles en el proyecto...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>dir "C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev" 
+ El volumen de la unidad C es Windows-SSD
+ El n£mero de serie del volumen es: 380E-8E7E
+
+ Directorio de C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev
+
+24/11/2026  05:44 p.ÿm.    <DIR>          .
+24/11/2026  05:44 p.ÿm.    <DIR>          ..
+24/11/2026  05:44 p.ÿm.                88 .dockerignore
+24/11/2026  05:44 p.ÿm.               149 .env.example
+24/11/2026  05:44 p.ÿm.               264 .gitignore
+24/11/2026  05:44 p.ÿm.             1.305 docker-compose.yml
+24/11/2026  05:44 p.ÿm.               435 Dockerfile
+24/11/2026  05:44 p.ÿm.    <DIR>          evidencias
+24/11/2026  05:44 p.ÿm.             2.343 index.js
+24/11/2026  05:44 p.ÿm.    <DIR>          jenkins
+24/11/2026  05:44 p.ÿm.             1.541 Jenkinsfile
+24/11/2026  05:44 p.ÿm.            34.413 package-lock.json
+24/11/2026  05:44 p.ÿm.               287 package.json
+24/11/2026  05:44 p.ÿm.    <DIR>          proyecto-api-docker-integrante3
+24/11/2026  05:44 p.ÿm.            12.999 proyecto-api-docker-integrante3.zip
+24/11/2026  05:44 p.ÿm.             2.233 README.md
+24/11/2026  05:44 p.ÿm.            12.529 Revision_Entrega_Integrante3.xlsx
+              12 archivos         68.586 bytes
+               5 dirs  119.275.053.056 bytes libres
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (3. Validar archivos clave)
+[Pipeline] echo
+Comprobando archivos del proyecto...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>set "REPO=C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev" 
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>if exist "C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev\package.json" echo package.json encontrado 
+package.json encontrado
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>if exist "C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev\Dockerfile" echo Dockerfile encontrado 
+Dockerfile encontrado
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>if exist "C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev\docker-compose.yml" echo docker-compose.yml encontrado 
+docker-compose.yml encontrado
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>if exist "C:\Users\alice\OneDrive\Documentos\Alice\Estudio\Poligran\Semestre 5\Integracion continua\Entrega_IntegracionContinua-dev\Entrega_IntegracionContinua-dev\jenkins" echo Carpeta jenkins encontrada 
+Carpeta jenkins encontrada
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (4. Resumen de validacion)
+[Pipeline] echo
+Etapas de revision ejecutadas correctamente en Windows.
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\pipeline-proyecto-ci>echo Pipeline completado correctamente en Jenkins 
+Pipeline completado correctamente en Jenkins
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline completado con exito.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
